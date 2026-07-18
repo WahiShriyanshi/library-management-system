@@ -1,3 +1,5 @@
+package Entity;
+
 public class Book {
     private int bookId;
     private String bookName;
@@ -6,7 +8,7 @@ public class Book {
     private int price;
     private boolean available;
 
-    public Book(int bookId, String bookName, String author, String description, int price,boolean available) {
+    public Book(int bookId, String bookName, String author, String description, int price, boolean available) {
         this.bookId = bookId;
         this.bookName = bookName;
         this.author = author;

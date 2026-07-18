@@ -1,3 +1,5 @@
+package Entity;
+
 import java.time.LocalDate;
 
 public class Transaction {
@@ -8,20 +10,21 @@ public class Transaction {
 	private LocalDate issueDate;
 	private LocalDate dueDate;
 	private LocalDate returnDate;
-	private Integer totalFine;
-	private Boolean paidFine;
+	private double totalFine;
+	private double paidFine;
+	private TransactionStatus status;
 
-	public Transaction(int transactionId, int bookId, int memberId, int librarianId, LocalDate issuDate,
-			LocalDate dueDate, Integer totalFine) {
+	public Transaction(int transactionId, int bookId, int memberId, int librarianId, LocalDate issuDate) {
 		this.transactionId = transactionId;
 		this.bookId = bookId;
 		this.memberId = memberId;
 		this.librarianId = librarianId;
 		this.issueDate = issuDate;
-		this.dueDate = dueDate;
+		this.dueDate = issueDate.plusDays(14);
 		this.returnDate = null;
-		this.totalFine = null;
-		this.paidFine = null;
+		this.totalFine = 0.0;
+		this.paidFine = 0.0;
+		this.status = TransactionStatus.ACTIVE;
 	}
 
 	// getters
@@ -53,12 +56,16 @@ public class Transaction {
 		return returnDate;
 	}
 
-	public int getTotalFine() {
+	public double getTotalFine() {
 		return totalFine;
 	}
 
-	public Boolean ispaidFine() {
+	public double getPaidFine() {
 		return paidFine;
+	}
+
+	public TransactionStatus getStatus() {
+		return status;
 	}
 
 	// setters
@@ -78,7 +85,7 @@ public class Transaction {
 		this.librarianId = librarianId;
 	}
 
-	public void setIssueDate(int IssueDate) {
+	public void setIssueDate(LocalDate issueDate) {
 		this.issueDate = issueDate;
 	}
 
@@ -90,12 +97,22 @@ public class Transaction {
 		this.returnDate = returnDate;
 	}
 
-	public void setTotalFine(int totalFine) {
+	public void setTotalFine(double totalFine) {
 		this.totalFine = totalFine;
 	}
 
-	public void setpaidFine() {
+	public void setPaidFine(double paidFine) {
 		this.paidFine = paidFine;
 	}
 
+	public void setStatus(TransactionStatus status) {
+		this.status = status;
+	}
+
+	public String isFullyPaid() {
+		if (paidFine >= totalFine) {
+			return "Fine has been paid completely";
+		}
+		return "Amount" + paidFine + "has been paid" + (totalFine - paidFine) + "is pending";
+	}
 }

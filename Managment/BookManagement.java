@@ -1,10 +1,14 @@
+package Managment;
+
 import java.util.*;
+
+import Entity.Book;
 
 public class BookManagement {
 	private HashMap<Integer, Book> books;
 
 	public BookManagement() {
-		//System.out.println("BookManagment is working");
+		// System.out.println("BookManagment is working");
 		books = new HashMap<>();
 	}
 
