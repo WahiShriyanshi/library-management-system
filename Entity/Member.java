@@ -6,9 +6,10 @@ public class Member extends User {
 	private int issuedBooks;
 	private double pendingFine;
 
-	public Member(int id, String name, LocalDate joiningDate, String email, String password, int issuedBooks) {
+	public Member(int id, String name, LocalDate joiningDate, String email, String password) {
 		super(id, name, joiningDate, email, password);
-		this.issuedBooks = issuedBooks;
+		this.issuedBooks = 0;
+		this.pendingFine = 0;
 	}
 
 	// getter

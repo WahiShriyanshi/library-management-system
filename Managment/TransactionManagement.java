@@ -79,4 +79,11 @@ public class TransactionManagement {
 			throw new TransactionNotFound();
 		}
 	}
+
+	public Transaction getTransactionById(int transactionId) throws TransactionNotFound {
+		if (!transaction.containsKey(transactionId)) {
+			throw new TransactionNotFound();
+		}
+		return transaction.get(transactionId);
+	}
 }
